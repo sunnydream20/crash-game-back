@@ -3,6 +3,13 @@ const express = require("express");
 const router = express.Router();
 const { userController } = require("../controller"); // Adjust the path accordingly
 
-router.post("/signup", userController.signup);
+// import validators
+const {
+  validateLogin,
+  validateRegistration,
+} = require("../middleware/validator");
+
+router.post("/signup", validateRegistration, userController.signup);
+router.post("/signin", validateLogin, userController.signin);
 
 module.exports = router;
