@@ -17,7 +17,7 @@ app.use(cors());
 connectDB();
 
 // require routers
-app.use("/", require("./routers"));
+app.use("/api", require("./routers"));
 
 const PORT = process.env.PORT || 5000;
 
