@@ -50,10 +50,8 @@ exports.signin = async (req, res) => {
     // Compare the hashed password with the provided password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
-      console.log(user._id);
       // Generate a JWT after successful login
       const token = createToken(user._id); // Create the token with user ID
-      console.log(token);
       res.status(200).json({ message: "Login successful", token }); // Return
     } else {
       res.status(400).json({ message: "Invalid email or password" });
